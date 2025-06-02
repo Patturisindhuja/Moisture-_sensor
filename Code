@@ -1,0 +1,29 @@
+int const sensorpin=A0;
+int const redled=2;
+int const greenled=3;
+int const buzzer=4;
+int const thersholdvalue=500;
+void setup()
+{
+    pinMode(A0,INPUT);
+    pinMode(2,OUTPUT);
+    pinMode(3,OUTPUT);
+    pinMode(4,OUTPUT);
+    Serial.begin(9600);
+}
+void loop(){
+    int sensorvalue=analogRead(A0);
+    Serial.print("sensorvalue:");
+    Serial.print(sensorvalue);
+    if(sensorvalue>500){
+        digitalWrite(redled,LOW);
+        digitalWrite(greenled,HIGH);
+        digitalWrite(buzzer,HIGH);
+    }
+    else{
+        digitalWrite(redled,HIGH);
+        digitalWrite(greenled,LOW);
+        digitalWrite(buzzer,LOW);
+    }
+    delay(1000);
+}
